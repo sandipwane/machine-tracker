@@ -36,11 +36,16 @@ const typeDefs = gql`
     value: Float!
   }
 
+  input MachineWhereUniqInput {
+    id: ID
+  }
+
   type Query {
     hello: String
     books: [Book]
     machines: [Machine!]
     sensorData:[SensorDataPoint]
+    machine(where: MachineWhereUniqInput!): Machine
   }
 `;
 
