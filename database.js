@@ -1,18 +1,44 @@
-const books = [
+var sensors = [
   {
-    title: 'The Awakening',
-    author: 'Kate Chopin',
+    id: 1,
+    name: 'Sensor 1',
+    machine: 1,
   },
   {
-    title: 'City of Glass',
-    author: 'Paul Auster',
-  },
+    id: 2,
+    name: 'Sensor 2',
+    machine: 1,
+  }
+]
+
+var gpsPositions = [
   {
-    title: 'Just Do It Again',
-    author: 'Sandip Wane',
+		id: 1,
+		location: {
+      latitude: 45.516,
+      longitude: -122.636
+    }
+	},
+	{
+		id: 2,
+		location: {
+			latitude: 45.516,
+			longitude: -122.636
+		}
+	}
+]
+
+var machines = [
+  {
+    id: 1,
+    name: 'Machine 1',
+    sensors: [1, 2],
+    lastKnownPosition: 1,
   },
-];
+]
 
 module.exports = {
-  books
+  machines,
+  gpsPositions,
+  sensors
 }
