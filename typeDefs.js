@@ -37,8 +37,8 @@ const typeDefs = gql`
 
   type Query {
     machines: [Machine!]
-    sensorData:[SensorDataPoint]
     machine(where: MachineWhereUniqInput!): Machine
+    sensorData(id: ID!, from: DateTime!, to: DateTime!): [SensorDataPoint]
   }
 `;
 
