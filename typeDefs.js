@@ -3,11 +3,6 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   scalar DateTime
 
-  type Book {
-    title: String
-    author: String
-  }
-
   type Machine {
     id: ID!
     name: String
@@ -41,8 +36,6 @@ const typeDefs = gql`
   }
 
   type Query {
-    hello: String
-    books: [Book]
     machines: [Machine!]
     sensorData:[SensorDataPoint]
     machine(where: MachineWhereUniqInput!): Machine
