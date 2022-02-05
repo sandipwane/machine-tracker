@@ -28,11 +28,7 @@ const getAllMachines = () => {
 
 
 const resolvers = {
-  Query: {
-    hello: () => {
-      return 'Hello World!';
-    },
-  },
+  Query: {},
   DateTime: GraphQLDateTime,
 };
 
