@@ -4,7 +4,7 @@
     <div>
     </div>
     <a-list item-layout="horizontal" :data-source="machines">
-      <a-list-item slot="renderItem" slot-scope="item, index">
+      <a-list-item slot="renderItem" slot-scope="item">
         <a-list-item-meta v-bind:description="item.sensors.length + ' sensors'" >
           <a slot="title" href="#/">
             <router-link :to="{ name: 'machine', params: { id: item.id } }">
