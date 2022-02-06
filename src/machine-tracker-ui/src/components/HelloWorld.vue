@@ -1,12 +1,19 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-
-  <div  v-for="machine in machines" :key="machine.id">
-    <h2>{{ machine.name }}</h2>
-    <p>{{ machine.id }}</p>
-  </div>
-
+    <div>
+      <table border="true" class="center">
+        <tbody>
+          <tr v-for="machine in machines" :key="machine.id">
+            <td>{{ machine.id }}</td>
+            <td>{{ machine.name }}</td>
+            <td>
+              <a href="#" @click.prevent="addMachine">more</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -34,18 +41,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+  }
+  .center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
 </style>
