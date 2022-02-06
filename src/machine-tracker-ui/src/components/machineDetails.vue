@@ -1,21 +1,30 @@
 <template>
   <div>
-    <h1>Details for {{ machine.name }}</h1>
-    <div>
-      <strong> Sensors </strong>
-      <table>
-        <tbody>
-          <tr v-for="sensor in machine.sensors" :key="sensor.id">
-            <td>
-              {{ sensor.name }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <pre>
+    <a-card :title="machine.name" style="width: 500px">
+      <a slot="extra" href="#">
+        <router-link to="/">
+          <a-icon type="close" />
+        </router-link>
+      </a>
+      <a-list size="small" bordered :data-source="machine.sensors">
+        <a-list-item v-if="item.name"  slot="renderItem" slot-scope="item">
+          {{ item.name || " "}}
+        </a-list-item>
+        <div slot="header">
+          <strong>Sensors</strong>
+        </div>
+      </a-list>
+      <br/>
+      <div>
+        <strong>Lat Long</strong>
+        <p v-if="machine.lastKnownPosition">
+          ({{machine.lastKnownPosition.location.latitude}}, {{machine.lastKnownPosition.location.longitude}})
+        </p>
+      </div>
+    </a-card>
+    <!-- <pre>
       {{machine}}
-    </pre>
+    </pre> -->
   </div>
 </template>
 
