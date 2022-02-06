@@ -28,7 +28,29 @@ const getAllMachines = () => {
 
 
 const resolvers = {
-  Query: {},
+  Query: {
+    machines: () => {
+      return db.machines
+    },
+  },
+  Machine: {
+    sensors: (machine) => {
+      return _.filter(db.sensors, { machine: machine.id });
+    },
+    lastKnownPosition: (machine) => {
+      return _.find(db.gpsPositions, { id: machine.lastKnownPosition });
+    }
+  },
+  Sensor: {
+    machine: (sensor) => {
+      return _.find(db.machines, { id: sensor.machine });
+    }
+  },
+  // GpsPosition: {
+  //   machine: (gpsPosition) => {
+  //     return _.find(db.machines, { lastKnownPosition: gpsPosition.id });
+  //   }
+  // },
   DateTime: GraphQLDateTime,
 };
 
