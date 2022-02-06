@@ -1,8 +1,8 @@
 <template>
-  <div class="hello">
+  <div class="center">
     <h1>{{ msg }}</h1>
     <div>
-      <table border="true" class="center">
+      <table border="true" >
         <tbody>
           <tr v-for="machine in machines" :key="machine.id">
             <td>{{ machine.id }}</td>
@@ -46,10 +46,6 @@ export default {
     border: 1px solid black;
     border-collapse: collapse;
     padding: 5px;
-  }
-  .center {
-    margin-left: auto;
-    margin-right: auto;
   }
 
 </style>

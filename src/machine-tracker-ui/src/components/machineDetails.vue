@@ -1,7 +1,21 @@
 <template>
-  <div class="hello">
-    <h1>Machine Details</h1>
-    {{$route.params.id}}
+  <div>
+    <h1>Details for {{ machine.name }}</h1>
+    <div>
+      <strong> Sensors </strong>
+      <table>
+        <tbody>
+          <tr v-for="sensor in machine.sensors" :key="sensor.id">
+            <td>
+              {{ sensor.name }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <pre>
+      {{machine}}
+    </pre>
   </div>
 </template>
 
@@ -15,14 +29,33 @@ export default {
     msg: String
   },
   apollo:{
-    machines: gql`
-      query {
-        machines {
+    machine: {
+      query:  gql`
+      query Machine($where: MachineWhereUniqInput!) {
+        machine(where: $where) {
           id
           name
+          sensors {
+            id
+            name
+          }
+          lastKnownPosition {
+            location {
+              latitude
+              longitude
+            }
+          }
         }
       }
-    `
+    `,
+      variables() {
+        return {
+          where: {
+            id: this.$route.params.id
+          }
+        }
+      }
+    }
   }
 }
 </script>
