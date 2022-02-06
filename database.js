@@ -22,7 +22,7 @@ var sensors = [
   {
     id: 5,
     name: 'Sensor 5',
-    machine: 5,
+    machine: 3,
   },
 ]
 
@@ -74,14 +74,20 @@ var gpsPositions = [
 			latitude: -45.516,
 			longitude: 12.636
 		}
+	},
+	{
+		id: 3,
+		location: {
+			latitude: 18.516726,
+			longitude: 73.856255
+		}
 	}
 ]
 
 var machines = [
-
   new Machine(1, 'Machine 1', [1,2], 1),
   new Machine(2, 'Machine 2', [3,4], 2),
-  new Machine(3, 'Machine 3'),
+  new Machine(3, 'Machine 3', [5], 3),
   new Machine(4, 'Machine 4'),
   new Machine(5, 'Machine 5', [1, 4], 1),
   new Machine(6, 'Machine 6'),
