@@ -35,6 +35,19 @@ const resolvers = {
     machine: (_parent, args) => {
       const id = parseInt(_.get(args, 'where.id', -1));
       return _.find(db.machines, { id });
+    },
+    sensorData: (_parent, args) => {
+      const { id, from, to } = args;
+      const dataPoints =  _.filter(db.sensorDataPoints, { sensorId: parseInt(id) });
+      return dataPoints;
+      /* // filter data points between from and to
+      const filteredDataPoints = _.filter(dataPoints, (dataPoint) => {
+        const date = new Date(dataPoint.timestamp);
+        return date >= from && date <= to;
+      });
+
+      return filteredDataPoints; */
+
     }
   },
   Machine: {
@@ -50,11 +63,15 @@ const resolvers = {
       return _.find(db.machines, { id: sensor.machine });
     }
   },
-  // GpsPosition: {
-  //   machine: (gpsPosition) => {
-  //     return _.find(db.machines, { lastKnownPosition: gpsPosition.id });
-  //   }
-  // },
+  SensorDataPoint: {
+    timestamp: (sensorDataPoint) => {
+      return new Date(sensorDataPoint.timestamp);
+    },
+    sensorId: (sensorDataPoint) => {
+      return _.find(db.sensors, { id: sensorDataPoint.sensorId });
+    }
+
+  },
   DateTime: GraphQLDateTime,
 };
 

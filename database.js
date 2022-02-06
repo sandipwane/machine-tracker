@@ -26,6 +26,31 @@ var sensors = [
   },
 ]
 
+const sensorDataPoints = [
+  {
+    id: 1,
+    timestamp: new Date("02/15/2022 11:00:00"),
+    value: 12.3,
+    sensorId: 1,
+  },
+  {
+    id: 2,
+    timestamp: new Date("02/16/2022 12:00:00"),
+    value: 323.4,
+    sensorId: 1,
+  },
+  {
+    id: 3,
+    timestamp: new Date(),
+    value: 30.1,
+  },
+  {
+    id: 4,
+    timestamp: new Date(),
+    value: 3.14,
+  },
+]
+
 class Machine {
   constructor(id, name, sensors, lastKnownPosition) {
     this.id = id
@@ -69,5 +94,6 @@ var machines = [
 module.exports = {
   machines,
   gpsPositions,
-  sensors
+  sensors,
+  sensorDataPoints
 }

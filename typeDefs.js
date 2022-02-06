@@ -27,8 +27,10 @@ const typeDefs = gql`
   }
 
   type SensorDataPoint {
+    id: ID!
     timestamp: DateTime!
     value: Float!
+    sensorId: Sensor
   }
 
   input MachineWhereUniqInput {
