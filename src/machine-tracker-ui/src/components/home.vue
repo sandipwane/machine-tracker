@@ -2,14 +2,15 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <div>
+      NOT THIS ONE
       <table border="true" class="center">
         <tbody>
           <tr v-for="machine in machines" :key="machine.id">
             <td>{{ machine.id }}</td>
             <td>{{ machine.name }}</td>
             <td>
-             <router-link :to="{ name: 'machine', params: { id: machine.id } }">more</router-link>
               <!-- <a href="#" @click.prevent="addMachine">more</a> -->
+              <router-link :to="{ name: 'machine', params: { id: machine.id } }">more</router-link>
             </td>
           </tr>
         </tbody>
