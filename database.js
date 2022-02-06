@@ -19,6 +19,11 @@ var sensors = [
     name: 'Sensor 4',
     machine: 2,
   },
+  {
+    id: 5,
+    name: 'Sensor 5',
+    machine: 5,
+  },
 ]
 
 class Machine {

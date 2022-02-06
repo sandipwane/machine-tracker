@@ -32,6 +32,10 @@ const resolvers = {
     machines: () => {
       return db.machines
     },
+    machine: (_parent, args) => {
+      const id = parseInt(_.get(args, 'where.id', -1));
+      return _.find(db.machines, { id });
+    }
   },
   Machine: {
     sensors: (machine) => {
@@ -39,7 +43,7 @@ const resolvers = {
     },
     lastKnownPosition: (machine) => {
       return _.find(db.gpsPositions, { id: machine.lastKnownPosition });
-    }
+    },
   },
   Sensor: {
     machine: (sensor) => {
