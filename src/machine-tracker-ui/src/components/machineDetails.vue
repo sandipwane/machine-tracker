@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="center" >
     <a-card :title="machine.name" style="width: 500px">
       <a slot="extra" href="#">
         <router-link to="/">
@@ -22,9 +22,6 @@
         </p>
       </div>
     </a-card>
-    <!-- <pre>
-      {{machine}}
-    </pre> -->
   </div>
 </template>
 
@@ -71,5 +68,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 </style>
