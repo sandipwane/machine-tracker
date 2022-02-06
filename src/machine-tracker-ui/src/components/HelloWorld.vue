@@ -2,19 +2,25 @@
   <div class="center">
     <h1>{{ msg }}</h1>
     <div>
-      <table border="true" >
-        <tbody>
-          <tr v-for="machine in machines" :key="machine.id">
-            <td>{{ machine.id }}</td>
-            <td>{{ machine.name }}</td>
-            <td>
-             <router-link :to="{ name: 'machine', params: { id: machine.id } }">more</router-link>
-              <!-- <a href="#" @click.prevent="addMachine">more</a> -->
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
+    <a-list item-layout="horizontal" :data-source="machines">
+      <a-list-item slot="renderItem" slot-scope="item, index">
+        <a-list-item-meta v-bind:description="item.sensors.length + ' sensors'" >
+          <a slot="title" href="#/">
+            <router-link :to="{ name: 'machine', params: { id: item.id } }">
+              {{ item.name }}
+            </router-link>
+          </a>
+          <a-avatar
+            slot="avatar"
+          > {{ item.id }}
+          </a-avatar>
+        </a-list-item-meta>
+        <div>
+          <router-link :to="{ name: 'machine', params: { id: item.id } }">more</router-link>
+        </div>
+      </a-list-item>
+    </a-list>
   </div>
 </template>
 
@@ -23,7 +29,6 @@
 import gql from 'graphql-tag'
 
 export default {
-  name: 'HelloWorld',
   props: {
     msg: String
   },
@@ -33,10 +38,13 @@ export default {
         machines {
           id
           name
+          sensors{
+            name
+          }
         }
       }
     `
-  }
+  },
 }
 </script>
 
